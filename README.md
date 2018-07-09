@@ -1,8 +1,9 @@
 # SudokuAlgoritham
-I am working on this programm to solve any level of sudoku . But right now its workes only for Easy and medium level . 
+I am working on this program to solve any level of sudoku . But right now it is working only for Easy and medium level . 
 I tried GeekForGeek solution also 
 https://www.geeksforgeeks.org/backtracking-set-7-suduku/
-But unfortunately for me that also not working 
+But unfortunately for me that is not working 
+java conversion of the same c++ code is present in my code files.
 
 # How to Run this Code 
 1. SudokuAlgo.java is the Main file 
@@ -10,11 +11,8 @@ But unfortunately for me that also not working
 3. Uncommit or create any grid to solve  and then run below code line 
 
       SudokuAlgoExplained sudoku = new SudokuAlgoExplained();
-      System.out.println("###### Step 2 -- create matrix with cell objects having values from grid . So that we can apply algorithm logics ######");
       sudoku.createOperationalMatrix(grid);
-	   
-	    System.out.println("###### Step 3. Running the Algo  to fill the operational matrix  ######");
-	   sudoku.runAlgo();
+      sudoku.runAlgo();
      
 Note:- Keep logger utelity as false in both Main and SudokuAlgoExplained.java file  if you dont want to see all the steps of execution 
 
