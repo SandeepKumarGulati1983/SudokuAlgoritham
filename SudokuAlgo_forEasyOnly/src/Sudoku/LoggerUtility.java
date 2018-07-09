@@ -1,9 +1,7 @@
 package Sudoku;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.util.LinkedList;
 
 public class LoggerUtility {
 
@@ -25,13 +23,13 @@ public class LoggerUtility {
 	public void sleepAndShowStatus(String s, String furtherValue1, int row, int col) {
 
 		if (run) {
-			// try {
-			// Thread.sleep(1000);
-			//
-			// } catch (InterruptedException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// }
+			 try {
+			 Thread.sleep(1000);
+			
+			 } catch (InterruptedException e) {
+			 // TODO Auto-generated catch block
+			 e.printStackTrace();
+			 }
 
 //			System.setOut(o);
 			System.out.println(s + "----" + furtherValue1 + "----row--" + row + "---col--" + col);
@@ -49,6 +47,17 @@ public class LoggerUtility {
 
 		System.out.println("===========================================");
 		System.out.println("===========================================");
+	}
+	
+
+
+
+	public void printPossibleCandidates(LinkedList<Integer> list) {
+		 for (int element : list) {
+		 System.out.print(element);
+		 }
+		 System.out.println("*****************************");
+
 	}
 
 }

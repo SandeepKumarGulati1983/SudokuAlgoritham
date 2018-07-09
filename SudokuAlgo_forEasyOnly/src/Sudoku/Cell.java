@@ -18,6 +18,13 @@ public class Cell{
 	// if status is true then there should be some value greater then 0 otherwise 0 
 	int cellValue;
 	
+	
+/*
+ * for medium and difficult sudoku , there are high possibility that none of the left cell will be having single possible candidate.
+ * in that case the programm will keep scanning and try to reduce possible candidate but fail.
+ * for avoiding that deadloack , its better to assign any one value to possible candidate and move ahead  
+ */
+	
 	public Cell (boolean status , int cellValue)
 	{
 		this.status = status;
