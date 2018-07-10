@@ -2,13 +2,13 @@
 I am working on this program to solve any level of sudoku . But right now it is working only for Easy and medium level . 
 I tried GeekForGeek solution also 
 https://www.geeksforgeeks.org/backtracking-set-7-suduku/
-But unfortunately for me that is not working 
-java conversion of the same c++ code is present in my code files.
+But unfortunately for me that is not working. 
+Java conversion of the same c++ code is present in my code files.
 
 # How to Run this Code 
 1. SudokuAlgo.java is the Main file 
-2. Here i provided 3 level of sudoku's grid .
-3. Uncommit or create any grid to solve  and then run below code line 
+2. Here I provided example matrixs of 3 type mid/ high / low difficulty .
+3. Uncommit or create any matrix to solve  and then run below code line 
 
       SudokuAlgoExplained sudoku = new SudokuAlgoExplained();
       sudoku.createOperationalMatrix(grid);
