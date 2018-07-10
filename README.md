@@ -41,6 +41,6 @@ Note:- Keep logger utelity as false in both Main and SudokuAlgoExplained.java fi
   the logic introduced is that . if there will not any cell with one possible candidates then after 81 attempts (this can be fine grained) assign any cell the first possible candidates and rescan . repeat this till the sudoku get filled 
   
 # Code improvements areas 
-1.  code for reaching each grid can be reduced further by using mathematical formula to find left and right boundaries 
+1.  code for reaching each grid can be reduced further by using mathematical formula to find left and right boundaries (Done - taken idea from GeekForGeek code (row - row%3 ))
 2.  multiple for loops can be reduced to improve performance 
 3.  have not used logger library just because I want to use Println and print feature to control the /n for printing sudoku matrix 
