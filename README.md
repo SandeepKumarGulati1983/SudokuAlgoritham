@@ -1,6 +1,11 @@
 # SudokuAlgoritham
-This solution is little differnt then of professor Das  of MIT or similar java solution pro ides at bellow geek link . But right now it is working only for Easy and medium level . 
-I tried GeekForGeek solution also 
+This solution is not a simple BACKTRACKING algo as explained by  professor Das  of MIT or similar java solution provided at bellow Geek-- link .
+
+This is an object oriented solution where each cell has  a memory to keep the possible element list , which he keeps improving with each scan. 
+
+But right now it is working only for Easy and medium level, becuase for difficult level,  cell has to guess and sometime that guess is not right which lead to reset the all privios guess (working on this )
+
+GeekForGeek solution.
 https://www.geeksforgeeks.org/backtracking-set-7-suduku/
 But unfortunately for me that is not working. 
 Java conversion of the same c++ code is present in my code files.
