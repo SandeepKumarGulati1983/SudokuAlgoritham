@@ -1,5 +1,5 @@
 # SudokuAlgoritham
-I am working on this program to solve any level of sudoku . But right now it is working only for Easy and medium level . 
+This solution is little differnt then of professor Das  of MIT or similar java solution pro ides at bellow geek link . But right now it is working only for Easy and medium level . 
 I tried GeekForGeek solution also 
 https://www.geeksforgeeks.org/backtracking-set-7-suduku/
 But unfortunately for me that is not working. 
