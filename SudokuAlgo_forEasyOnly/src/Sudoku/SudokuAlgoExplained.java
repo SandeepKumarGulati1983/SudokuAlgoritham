@@ -1,6 +1,7 @@
 package Sudoku;
 
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 public class SudokuAlgoExplained {
 
@@ -14,8 +15,18 @@ public class SudokuAlgoExplained {
 	// reduced further.
 	int deadloackCounter = 0;
 
+	/*
+	 * starting 
+	 */
+	int[][] testmatrix;
+	SudokuAlgoExplained (int[][] sudokuMatrix){
+		this.testmatrix = sudokuMatrix;
+		createOperationalMatrix(testmatrix);
+		runAlgo();
+	}
+	
 	// initially need to fill the status of each cell as provided in main
-	public void createOperationalMatrix(int[][] sudokuMatrix) {
+	void createOperationalMatrix(int[][] sudokuMatrix) {
 
 		for (int row = 0; row < 9; row++) {
 			for (int col = 0; col < 9; col++) {
@@ -28,7 +39,7 @@ public class SudokuAlgoExplained {
 
 	}
 
-	public void runAlgo() {
+	void runAlgo() {
 
 		// it will run till the time any of cell in the sudoku matrix have zero value
 		while (!isSudokuCompleated()) {
@@ -106,7 +117,7 @@ public class SudokuAlgoExplained {
 		possibleCandiates = scanColumn(matrix, col, possibleCandiates);
 
 		// 3. scan Cube
-		possibleCandiates = scanCube(row- row %3 , col - col%3, possibleCandiates, matrix);
+		possibleCandiates = scanCube(row - row % 3, col - col % 3, possibleCandiates, matrix);
 
 		// 4. assign to cell's possible candidate
 		matrix[row][col].isPossibleCandidatesAreAvailable = true;
@@ -146,14 +157,12 @@ public class SudokuAlgoExplained {
 
 	}
 
-	
-	LinkedList<Integer> scanCube(int boxStartRow, int boxStartCol, LinkedList<Integer> candidates, Cell[][] matrix) 
-	{
-	    for (int row = 0; row < 3; row++)
-	        for (int col = 0; col < 3; col++) 
-	        	candidates.remove((Integer) matrix[row+boxStartRow][col+boxStartCol].cellValue);
-	   
-	    return candidates;
+	LinkedList<Integer> scanCube(int boxStartRow, int boxStartCol, LinkedList<Integer> candidates, Cell[][] matrix) {
+		for (int row = 0; row < 3; row++)
+			for (int col = 0; col < 3; col++)
+				candidates.remove((Integer) matrix[row + boxStartRow][col + boxStartCol].cellValue);
+
+		return candidates;
 	}
 
 	// ===================================================UNIQENESS UTILITIES
@@ -206,8 +215,8 @@ public class SudokuAlgoExplained {
 				deadloackCounter++;
 				// 2. while checking unique element , if element found in other cell's
 				// candidates list then remove from this cell
-				//checkUniquenessInBlock(matrix, row, col);
-				scanCubeForUniqeElement(matrix, row - row%3 , col - col%3, matrix[row][col]);
+				// checkUniquenessInBlock(matrix, row, col);
+				scanCubeForUniqeElement(matrix, row - row % 3, col - col % 3, matrix[row][col]);
 				// getUniqueCandidate(matrix, row, col);
 			} else {
 				/*
@@ -217,9 +226,9 @@ public class SudokuAlgoExplained {
 				 */
 				System.out.println("dedloack counter size is ===" + deadloackCounter
 						+ " == element uniqe candidates are == " + matrix[row][col].possibleCandidtes.size());
-		
+
 				reduceOneCandidate(matrix, row, col);
-				
+
 				deadloackCounter = 0;
 			}
 		}
@@ -227,28 +236,35 @@ public class SudokuAlgoExplained {
 	}
 
 	void reduceOneCandidate(Cell[][] matrix, int row, int col) {
-
+		try {
 			matrix[row][col].cellValue = matrix[row][col].possibleCandidtes.getFirst();
 			matrix[row][col].isUniqueCandidateAvailable = true;
 			log.sleepAndShowStatus("<<only one uniqe element present for this cell >>", "" + matrix[row][col].cellValue,
 					row, col);
 			matrix[row][col].status = true;
+		} catch (NoSuchElementException e) {
+			
+			/*
+			 * skip  -- is not working , we need to reset in case of exception 
+			 */
+		System.out.println("==== you are running difficult sudoku =====");
+			
+		}
 
 	}
 
 	void scanCubeForUniqeElement(Cell[][] matrix, int boxStartRow, int boxStartCol, Cell blockElement) {
 		for (int row = 0; row < 3; row++)
-	        for (int col = 0; col < 3; col++)
-	        {
-	        	if (!matrix[row+boxStartRow][col+boxStartCol].status) {
+			for (int col = 0; col < 3; col++) {
+				if (!matrix[row + boxStartRow][col + boxStartCol].status) {
 
 					// for concurrent modification exception handling , creating a new list type
-					for (int pe : new LinkedList<Integer>(matrix[row+boxStartRow][col+boxStartCol].possibleCandidtes)) {
+					for (int pe : new LinkedList<Integer>(
+							matrix[row + boxStartRow][col + boxStartCol].possibleCandidtes)) {
 						blockElement.possibleCandidtes.remove((Integer) pe);
 					}
 				}
-	        }
+			}
 	}
-
 
 }
